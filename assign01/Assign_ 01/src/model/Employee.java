@@ -90,4 +90,11 @@ public class Employee {
     public void setgen(String gen) {
         this.gen = gen;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" + "name=" + name + ", empID=" + empID + ", age=" + age + ", stDt=" + stDt + ", lvl=" + lvl + ", teamInfo=" + teamInfo + ", posTitl=" + posTitl + ", email=" + email + ", gen=" + gen + '}';
+    }
+    
+    
 }
