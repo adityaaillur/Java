@@ -18,6 +18,7 @@ public class Employee {
     private String posTitl;
     private String email;
     private String gen;
+    private String pic;
 
     public String getName() {
         return name;
@@ -89,6 +90,14 @@ public class Employee {
 
     public void setgen(String gen) {
         this.gen = gen;
+    }
+    
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String name) {
+        this.name = name;
     }
 
     @Override
