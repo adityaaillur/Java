@@ -381,6 +381,13 @@ public class ViewJPanel extends javax.swing.JPanel {
             return;
         }
         
+        ImageIcon photoIcon = new ImageIcon(image);
+        Image ph = photoIcon.getImage();
+        ph = ph.getScaledInstance(lblpic.getWidth(), lblpic.getHeight(), ph.SCALE_SMOOTH);
+        lblpic.setIcon(new ImageIcon(ph));
+        
+        
+        
         
         if(tblEmployee.getSelectedRowCount() == 1){
             //if single row is selected then update
@@ -393,6 +400,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             String posTitl = txtposTitl.getText();
             String email = txtemail.getText();
             String gen = txtgen.getText();
+            String pic = image;
        
             model.setValueAt(name, tblEmployee.getSelectedRow(), 0);
             model.setValueAt(empID, tblEmployee.getSelectedRow(), 1);
@@ -403,6 +411,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             model.setValueAt(posTitl, tblEmployee.getSelectedRow(), 6);
             model.setValueAt(email, tblEmployee.getSelectedRow(), 7);
             model.setValueAt(gen, tblEmployee.getSelectedRow(), 8);
+            model.setValueAt(pic, tblEmployee.getSelectedRow(), 9);
 
             JOptionPane.showMessageDialog(this, "Update Successful !!!");
         }
@@ -417,9 +426,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Please select single row for update !!!");
 
             }
-            
         }
-
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtgenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtgenActionPerformed
@@ -481,18 +488,20 @@ public class ViewJPanel extends javax.swing.JPanel {
     private void txtimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtimgActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtimgActionPerformed
-
+    private String image;
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File newfile = chooser.getSelectedFile();
         imageFilePath = newfile.getAbsolutePath();
-
+        image = imageFilePath;
         ImageIcon photoIcon = new ImageIcon(newfile.getAbsolutePath());
         Image ph = photoIcon.getImage();
         ph = ph.getScaledInstance(lblpic.getWidth(), lblpic.getHeight(), ph.SCALE_SMOOTH);
         lblpic.setIcon(new ImageIcon(ph));
+        txtimg.setText(imageFilePath);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
