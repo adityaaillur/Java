@@ -6,6 +6,8 @@ package ui;
 
 import java.awt.Image;
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -78,6 +80,11 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
+            }
+        });
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
             }
         });
 
@@ -161,24 +168,22 @@ public class CreateJPanel extends javax.swing.JPanel {
                                     .addComponent(lblemail)
                                     .addComponent(lblimg))
                                 .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtemail, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtposTitl, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtteamInfo, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtlvl)
-                                    .addComponent(txtimg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSave)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtemail, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtposTitl, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtteamInfo, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtlvl)
+                                        .addComponent(txtimg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(btnPic))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(btnSave)))
-                        .addGap(0, 32, Short.MAX_VALUE)))
+                                .addGap(6, 6, 6)
+                                .addComponent(btnPic))
+                            .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -209,8 +214,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtstDt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblstDt)
-                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblstDt))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtlvl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,11 +231,13 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblemail))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblimg)
-                    .addComponent(txtimg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                    .addComponent(txtimg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblimg))
+                .addGap(18, 18, 18)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtemail, txtlvl, txtposTitl, txtstDt, txtteamInfo});
@@ -250,7 +256,37 @@ public class CreateJPanel extends javax.swing.JPanel {
         String posTitl = txtposTitl.getText();
         String email = txtemail.getText();
         String gen = txtgen.getText();
-        String Pic = txtgen.getText();
+        String pic = txtimg.getText();
+        
+        if(!Pattern.compile("[a-zA-Z ]+").matcher(name).matches()){
+            JOptionPane.showMessageDialog(this, "Please enter valid name");
+            return;
+//            ([a-z].[0-9])|([0-9].[a-z])
+//           
+        }
+        
+        if(!Pattern.compile("[a-zA-Z ]+").matcher(lvl).matches()){
+            JOptionPane.showMessageDialog(this, "Please enter valid Level");
+            return;
+        
+            
+        }if(!Pattern.compile("[0-9]*$").matcher(age).matches()){
+            JOptionPane.showMessageDialog(this, "Please enter valid Age");
+            return;
+        }if(!Pattern.compile("[0-9]*$").matcher(stDt).matches()){
+            JOptionPane.showMessageDialog(this, "please enter valid start date");
+            return;
+        
+        }if(!Pattern.compile("[a-zA-Z ]+").matcher(posTitl).matches()){
+            JOptionPane.showMessageDialog(this, "please enter valid Position Title");
+            return;
+        //}if(!Pattern.compile("[0-9]*$").matcher(mobileNo).matches()){
+           // JOptionPane.showMessageDialog(this, "6");
+            //return;
+        }if(!Pattern.compile("^(.+)@(.+)$").matcher(email).matches()){
+            JOptionPane.showMessageDialog(this, "please enter valid Email");
+            return;
+        }
         
         Employee eh = history.addNewEmployee();
         
@@ -263,7 +299,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         eh.setposTitl(posTitl);
         eh.setemail(email);
         eh.setgen(gen);
-        eh.setPic(Pic);
+        eh.setPic(pic);
        
         JOptionPane.showMessageDialog(this, "New Employee added.");
         
@@ -276,7 +312,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtposTitl.setText("");
         txtemail.setText("");
         txtgen.setText("");
-        txtgen.setText("");
+        txtimg.setText("");
         
         
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -305,6 +341,20 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void txtimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtimgActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtimgActionPerformed
+
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
+        // TODO add your handling code here:
+    String regexString = "";
+    Pattern pattern = Pattern.compile(regexString);
+    Matcher matcher = pattern.matcher("Visit W3Schools!");
+    boolean matchFound = matcher.find();
+    if(matchFound) {
+      
+    } else {
+        
+      System.out.println("Match not found");
+    }
+    }//GEN-LAST:event_txtNameKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

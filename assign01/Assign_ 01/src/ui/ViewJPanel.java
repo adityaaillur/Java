@@ -73,6 +73,9 @@ public class ViewJPanel extends javax.swing.JPanel {
         txtSearch = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         lblpic = new javax.swing.JLabel();
+        lblimg = new javax.swing.JLabel();
+        txtimg = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -80,22 +83,22 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         tblEmployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Employee ID", "Age", "Gender", "Start Date", "Level", "Team Info", "Position Title", "Email"
+                "Name", "Employee ID", "Age", "Gender", "Start Date", "Level", "Team Info", "Position Title", "Email", "Img"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -181,6 +184,16 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Search");
 
+        lblimg.setText("Image Path");
+
+        txtimg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtimgActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Browse");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,6 +202,10 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGap(274, 274, 274)
                 .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(192, 192, 192))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 741, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbllvl)
@@ -200,33 +217,34 @@ public class ViewJPanel extends javax.swing.JPanel {
                     .addComponent(lblgen)
                     .addComponent(lblage)
                     .addComponent(jLabel1)
-                    .addComponent(lblName))
+                    .addComponent(lblName)
+                    .addComponent(lblimg))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtSearch)
-                        .addGap(10, 10, 10))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtgen, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                        .addComponent(txtstDt, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                        .addComponent(txtempID)
-                        .addComponent(txtName)
-                        .addComponent(txtlvl)
-                        .addComponent(txtposTitl)
-                        .addComponent(txtteamInfo)
-                        .addComponent(txtage, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                        .addComponent(txtemail)))
-                .addGap(16, 16, 16)
-                .addComponent(btnUpdate)
-                .addGap(20, 20, 20)
-                .addComponent(btnDelete)
-                .addGap(18, 18, 18)
-                .addComponent(lblpic, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 741, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtgen, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                            .addComponent(txtstDt, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                            .addComponent(txtempID)
+                            .addComponent(txtName)
+                            .addComponent(txtlvl)
+                            .addComponent(txtposTitl)
+                            .addComponent(txtteamInfo)
+                            .addComponent(txtage, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                            .addComponent(txtemail)
+                            .addComponent(txtSearch))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUpdate)
+                        .addGap(20, 20, 20)
+                        .addComponent(btnDelete)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblpic, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(107, 107, 107))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtimg, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,7 +300,13 @@ public class ViewJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lblpic, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblimg)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtimg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -387,15 +411,12 @@ public class ViewJPanel extends javax.swing.JPanel {
         txtposTitl.setText(model.getValueAt(tblEmployee.getSelectedRow(), 6).toString());
         txtemail.setText(model.getValueAt(tblEmployee.getSelectedRow(), 7).toString());
         txtgen.setText(model.getValueAt(tblEmployee.getSelectedRow(), 8).toString());
-        
-        JFileChooser choose = new JFileChooser ();
-        choose.showOpenDialog(null);
-        File f = choose.getSelectedFile ();
-        System.out.println(f.getAbsolutePath());        
-        ImageIcon image = new ImageIcon(f.getAbsolutePath());
+        txtimg.setText(model.getValueAt(tblEmployee.getSelectedRow(), 9).toString());
+
+      
+        ImageIcon image = new ImageIcon(txtimg.getText());
         image = new ImageIcon(image.getImage() . getScaledInstance (120, 120, Image.SCALE_SMOOTH)) ;
         lblpic.setIcon(image);
-        this.imageFilePath = f.getAbsolutePath();
         
 
     }//GEN-LAST:event_tblEmployeeMouseClicked
@@ -425,10 +446,15 @@ public class ViewJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_txtempIDActionPerformed
 
+    private void txtimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtimgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtimgActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblName;
@@ -437,6 +463,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblemail;
     private javax.swing.JLabel lblempID;
     private javax.swing.JLabel lblgen;
+    private javax.swing.JLabel lblimg;
     private javax.swing.JLabel lbllvl;
     private javax.swing.JLabel lblpic;
     private javax.swing.JLabel lblposTitl;
@@ -449,6 +476,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtempID;
     private javax.swing.JTextField txtgen;
+    private javax.swing.JTextField txtimg;
     private javax.swing.JTextField txtlvl;
     private javax.swing.JTextField txtposTitl;
     private javax.swing.JTextField txtstDt;
@@ -460,21 +488,21 @@ public class ViewJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblEmployee.getModel();
         model.setRowCount(0);
         
-        Object[] row = new Object[9];
+        Object[] row = new Object[10];
         
         for(Employee eh : history.getHistory()){
         
              
             row[0] = eh.getName();
-            row[1] = eh.getage();
-            row[2] = eh.getempID();
+            row[1] = eh.getAge();
+            row[2] = eh.getEmpID();
             row[3] = eh.getgen();
             row[4] = eh.getlvl();
             row[5] = eh.getposTitl();
             row[6] = eh.getstDt();
             row[7] = eh.getteamInfo();
             row[8] = eh.getemail();
-            
+            row[9] = eh.getPic();
             model.addRow(row);
                             
         }

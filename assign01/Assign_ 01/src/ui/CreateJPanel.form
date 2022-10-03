@@ -49,32 +49,28 @@
                                   <Component id="lblimg" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtemail" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtposTitl" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtteamInfo" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtlvl" max="32767" attributes="0"/>
-                                  <Component id="txtimg" alignment="0" pref="248" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblPic" min="-2" pref="126" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                      <Component id="btnPic" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="txtemail" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtposTitl" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtteamInfo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtlvl" max="32767" attributes="0"/>
+                                      <Component id="txtimg" alignment="0" pref="248" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
+                      <EmptySpace pref="227" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="btnPic" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblPic" min="-2" pref="126" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -112,11 +108,10 @@
                   <Component id="lblage" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnPic" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtstDt" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblstDt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnSave" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -138,12 +133,14 @@
                   <Component id="txtemail" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="lblemail" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblimg" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtimg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblimg" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnSave" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace pref="134" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -184,6 +181,7 @@
     <Component class="javax.swing.JTextField" name="txtName">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblemail">

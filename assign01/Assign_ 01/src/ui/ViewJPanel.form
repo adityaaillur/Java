@@ -21,6 +21,11 @@
               <Component id="lblTitle" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="741" max="-2" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
+          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lbllvl" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -33,37 +38,38 @@
                   <Component id="lblage" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblimg" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="txtSearch" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtgen" alignment="0" pref="179" max="32767" attributes="0"/>
+                          <Component id="txtstDt" alignment="0" pref="179" max="32767" attributes="0"/>
+                          <Component id="txtempID" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtlvl" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtposTitl" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtteamInfo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtage" alignment="0" pref="179" max="32767" attributes="0"/>
+                          <Component id="txtemail" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtSearch" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblpic" min="-2" pref="121" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtgen" alignment="0" pref="179" max="32767" attributes="0"/>
-                      <Component id="txtstDt" alignment="0" pref="179" max="32767" attributes="0"/>
-                      <Component id="txtempID" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtName" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtlvl" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtposTitl" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtteamInfo" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtage" alignment="0" pref="179" max="32767" attributes="0"/>
-                      <Component id="txtemail" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="txtimg" min="-2" pref="179" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="lblpic" min="-2" pref="121" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="741" max="-2" attributes="0"/>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -134,7 +140,15 @@
                       <Component id="lblpic" min="-2" pref="153" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="122" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblimg" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="txtimg" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="93" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -159,7 +173,7 @@
         <Component class="javax.swing.JTable" name="tblEmployee">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="9" rowCount="9">
+              <Table columnCount="10" rowCount="9">
                 <Column editable="false" title="Name" type="java.lang.Object"/>
                 <Column editable="false" title="Employee ID" type="java.lang.Object"/>
                 <Column editable="false" title="Age" type="java.lang.Object"/>
@@ -169,10 +183,16 @@
                 <Column editable="false" title="Team Info" type="java.lang.Object"/>
                 <Column editable="false" title="Position Title" type="java.lang.Object"/>
                 <Column editable="false" title="Email" type="java.lang.Object"/>
+                <Column editable="true" title="Img" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -357,6 +377,21 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblpic">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblimg">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Image Path"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtimg">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtimgActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Browse"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

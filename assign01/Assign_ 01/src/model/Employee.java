@@ -28,7 +28,7 @@ public class Employee {
         this.name = name;
     }
 
-    public String getempID() {
+    public String getEmpID() {
         return empID;
     }
 
@@ -36,7 +36,7 @@ public class Employee {
         this.empID = empID;
     }
 
-    public String getage() {
+    public String getAge() {
         return age;
     }
 
@@ -96,8 +96,8 @@ public class Employee {
         return pic;
     }
 
-    public void setPic(String name) {
-        this.name = name;
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 
     @Override
