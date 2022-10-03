@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.Objects;
+
 /**
  *
  * @author adityaillur
@@ -104,6 +106,56 @@ public class Employee {
     public String toString() {
         return "Employee{" + "name=" + name + ", empID=" + empID + ", age=" + age + ", stDt=" + stDt + ", lvl=" + lvl + ", teamInfo=" + teamInfo + ", posTitl=" + posTitl + ", email=" + email + ", gen=" + gen + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Employee other = (Employee) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.empID, other.empID)) {
+            return false;
+        }
+        if (!Objects.equals(this.age, other.age)) {
+            return false;
+        }
+        if (!Objects.equals(this.stDt, other.stDt)) {
+            return false;
+        }
+        if (!Objects.equals(this.lvl, other.lvl)) {
+            return false;
+        }
+        if (!Objects.equals(this.teamInfo, other.teamInfo)) {
+            return false;
+        }
+        if (!Objects.equals(this.posTitl, other.posTitl)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.gen, other.gen)) {
+            return false;
+        }
+        return Objects.equals(this.pic, other.pic);
+    }
+    
+    
     
     
 }

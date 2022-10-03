@@ -33,7 +33,12 @@ public class EmployeeHistory {
     }
     
     public void deleteEmployee(Employee eh) {
-        history.remove(eh);
+        for(int i=0;i<history.size();i++){
+            if(history.get(i).equals(eh)){
+                history.remove(eh);
+            }
+        }
+        
     }
     
 

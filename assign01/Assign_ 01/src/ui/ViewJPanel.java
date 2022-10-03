@@ -5,15 +5,16 @@
 package ui;
 
 import java.awt.Image;
-import java.io.File;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 import model.EmployeeHistory;
 import model.Employee;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.ImageIcon;
 
 
 /**
@@ -193,6 +194,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         });
 
         jButton1.setText("Browse");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -312,7 +318,7 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblEmployee.getSelectedRow();
+        /*int selectedRowIndex = tblEmployee.getSelectedRow();
         
         if (selectedRowIndex<0){
             JOptionPane.showMessageDialog(this, "Please select a Row to delete");
@@ -334,9 +340,35 @@ public class ViewJPanel extends javax.swing.JPanel {
         
         JOptionPane.showMessageDialog(this, "Employee data Deleted!!!");
         
+        populateTable();*/
+        int selectedRowIndex =  tblEmployee.getSelectedRow();
+            if(selectedRowIndex<0){
+             JOptionPane.showMessageDialog(this, "Select the Employee to Delete");
+             return;
+         }
+        
+        DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
+        
+        Employee temp = new Employee();
+        
+        temp.setName((String) model.getValueAt(selectedRowIndex, 0));
+        temp.setempID((String) model.getValueAt(selectedRowIndex, 1));
+        temp.setage((String) model.getValueAt(selectedRowIndex, 2));
+        temp.setgen((String) model.getValueAt(selectedRowIndex, 3));
+        temp.setstDt((String) model.getValueAt(selectedRowIndex,4));
+        temp.setlvl((String) model.getValueAt(selectedRowIndex, 5));
+        temp.setteamInfo((String) model.getValueAt(selectedRowIndex, 6));
+        temp.setposTitl((String) model.getValueAt(selectedRowIndex, 7));        
+        temp.setemail((String) model.getValueAt(selectedRowIndex, 8));
+        temp.setPic((String) model.getValueAt(selectedRowIndex, 9));
+        
+        //model.getVa
+        
+        history.deleteEmployee(temp);
+        
+        JOptionPane.showMessageDialog(this, "Selected Employee Deleted "); 
         populateTable();
-        
-        
+       
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -450,6 +482,19 @@ public class ViewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtimgActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File newfile = chooser.getSelectedFile();
+        imageFilePath = newfile.getAbsolutePath();
+
+        ImageIcon photoIcon = new ImageIcon(newfile.getAbsolutePath());
+        Image ph = photoIcon.getImage();
+        ph = ph.getScaledInstance(lblpic.getWidth(), lblpic.getHeight(), ph.SCALE_SMOOTH);
+        lblpic.setIcon(new ImageIcon(ph));
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
@@ -494,13 +539,13 @@ public class ViewJPanel extends javax.swing.JPanel {
         
              
             row[0] = eh.getName();
-            row[1] = eh.getAge();
-            row[2] = eh.getEmpID();
+            row[2] = eh.getAge();
+            row[1] = eh.getEmpID();
             row[3] = eh.getgen();
-            row[4] = eh.getlvl();
-            row[5] = eh.getposTitl();
-            row[6] = eh.getstDt();
-            row[7] = eh.getteamInfo();
+            row[5] = eh.getlvl();
+            row[7] = eh.getposTitl();
+            row[4] = eh.getstDt();
+            row[6] = eh.getteamInfo();
             row[8] = eh.getemail();
             row[9] = eh.getPic();
             model.addRow(row);
