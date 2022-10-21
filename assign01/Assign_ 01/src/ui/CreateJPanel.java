@@ -175,8 +175,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                                         .addComponent(txtposTitl, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtteamInfo, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtlvl)
-                                        .addComponent(txtimg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(txtimg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -207,10 +206,11 @@ public class CreateJPanel extends javax.swing.JPanel {
                             .addComponent(lblgen)))
                     .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblage)
-                    .addComponent(btnPic))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPic)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblage)))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtstDt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,7 +273,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         }if(!Pattern.compile("[0-9]*$").matcher(age).matches()){
             JOptionPane.showMessageDialog(this, "Please enter valid Age");
             return;
-        }if(!Pattern.compile("[0-9]*$").matcher(stDt).matches()){
+        }if(!Pattern.compile("[0-9]*$").matcher(empID).matches()){
             JOptionPane.showMessageDialog(this, "please enter valid start date");
             return;
         
