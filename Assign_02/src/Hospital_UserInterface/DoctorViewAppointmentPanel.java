@@ -4,6 +4,10 @@
  */
 package Hospital_UserInterface;
 
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author adityaillur
@@ -13,8 +17,13 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
     /**
      * Creates new form AdminViewHospitalPanel
      */
+    
+    private TableRowSorter<TableModel> sorter;
+    
     public DoctorViewAppointmentPanel() {
         initComponents();
+        sorter = new TableRowSorter<>(tblViewHospital.getModel());
+        tblViewHospital.setRowSorter(sorter);
     }
 
     /**
@@ -44,7 +53,6 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
         tblViewHospital = new javax.swing.JTable();
         lblGender = new javax.swing.JLabel();
         txtGender = new javax.swing.JTextField();
-        btnDelete = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         lblSearch = new javax.swing.JLabel();
 
@@ -76,6 +84,11 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
 
         btnUpdate.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         lblSpecialisation.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblSpecialisation.setText("City");
@@ -106,8 +119,11 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
         lblGender.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblGender.setText("Gender");
 
-        btnDelete.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
-        btnDelete.setText("Delete");
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
 
         lblSearch.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblSearch.setText("Search");
@@ -123,30 +139,27 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
                     .addComponent(lblVitalSigns)
                     .addComponent(lblSpecialisation)
                     .addComponent(lblAge)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblPatientID)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblName)
-                                        .addComponent(lblGender))
-                                    .addGap(122, 122, 122)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtCommunity)
-                                            .addComponent(txtCity)
-                                            .addComponent(txtVitalSigns, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(btnUpdate))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDelete)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPatientID)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblName)
+                                    .addComponent(lblGender))
+                                .addGap(122, 122, 122)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtCommunity)
+                                        .addComponent(txtCity)
+                                        .addComponent(txtVitalSigns, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnUpdate)))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblSearch)
                         .addGap(122, 122, 122)
@@ -160,7 +173,7 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,8 +184,7 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPatientID)
-                    .addComponent(btnDelete))
+                    .addComponent(lblPatientID))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,15 +233,26 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
 //
 //            System.out.println("Match not found");
 //        }
+
+        
     }//GEN-LAST:event_txtPatientIDKeyReleased
 
     private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCityActionPerformed
 
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        String textBoxString = txtSearch.getText();
+        sorter.setRowFilter(RowFilter.regexFilter(textBoxString));
+    }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAge;

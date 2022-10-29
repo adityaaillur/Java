@@ -213,6 +213,7 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
     // TODO add your handling code here:
+    if(jTable1.getSelectedRow()>-1){
         int id = Integer.parseInt(txtDocID.getText());
 //        int age = Integer.parseInt(txtAge.getText());
         String name = txtName.getText();
@@ -220,6 +221,9 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
         Doctor doctor = new Doctor(id, name, txtSpecialisation.getText(), txtUsername.getText(), (Hospital)jTable1.getValueAt(jTable1.getSelectedRow(), 1), txtPassword.getText(), txtGender.getText());
         SystemAdmin.doctorList.add(doctor);
         JOptionPane.showMessageDialog(null, "New Doctor Successfully Created.");
+    }else{
+        JOptionPane.showMessageDialog(null, "Select hospital.");
+    }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenderActionPerformed

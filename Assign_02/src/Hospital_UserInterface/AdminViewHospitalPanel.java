@@ -7,7 +7,10 @@ package Hospital_UserInterface;
 import HospitalMngmt.Doctor;
 import HospitalMngmt.SystemAdmin;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -18,8 +21,14 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
     /**
      * Creates new form AdminViewHospitalPanel
      */
+    
+    private TableRowSorter<TableModel> sorter; 
+
+    
     public AdminViewHospitalPanel() {
         initComponents();
+        sorter = new TableRowSorter<>(tblViewHospital.getModel());
+        tblViewHospital.setRowSorter(sorter);
     }
 
     /**
@@ -110,6 +119,17 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
+            }
+        });
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
             }
         });
 
@@ -271,6 +291,16 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
             fillTable();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        String textBoxString = txtSearch.getText();
+        sorter.setRowFilter(RowFilter.regexFilter(textBoxString));
+    }//GEN-LAST:event_txtSearchKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

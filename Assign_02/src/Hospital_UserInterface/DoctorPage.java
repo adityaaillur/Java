@@ -37,6 +37,7 @@ public class DoctorPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnViewAppointment = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,6 +56,13 @@ public class DoctorPage extends javax.swing.JFrame {
             }
         });
 
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -63,7 +71,8 @@ public class DoctorPage extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewAppointment))
+                    .addComponent(btnViewAppointment)
+                    .addComponent(btnBack))
                 .addGap(27, 27, 27))
         );
         jPanel1Layout.setVerticalGroup(
@@ -73,7 +82,9 @@ public class DoctorPage extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(174, 174, 174)
                 .addComponent(btnViewAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(btnBack)
+                .addContainerGap(338, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -114,12 +125,19 @@ public class DoctorPage extends javax.swing.JFrame {
         jSplitPane1.setRightComponent(new DoctorViewAppointmentPanel());
     }//GEN-LAST:event_btnViewAppointmentActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new MainLogin().setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnViewAppointment;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

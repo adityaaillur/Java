@@ -4,17 +4,36 @@
  */
 package Hospital_UserInterface;
 
+import HospitalMngmt.City;
+import HospitalMngmt.Community;
+import HospitalMngmt.Doctor;
+import HospitalMngmt.Encounter;
+import HospitalMngmt.Hospital;
+import HospitalMngmt.House;
+import HospitalMngmt.Patient;
+import HospitalMngmt.SystemAdmin;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author adityaillur
  */
 public class PatientSearchHospitalPanel extends javax.swing.JPanel {
-
+    private Patient patient;
+private TableRowSorter<TableModel> sorter; 
     /**
-     * Creates new form PatientSearchNearbyHospital
+     * Creates new form PatientSearchHospital
      */
-    public PatientSearchHospitalPanel() {
+    public PatientSearchHospitalPanel(Patient patient) {
         initComponents();
+        fillTable();
+        sorter = new TableRowSorter<TableModel>(tblViewDoc.getModel());
+        tblViewDoc.setRowSorter(sorter);
+        this.patient = patient;
     }
 
     /**
@@ -43,6 +62,17 @@ public class PatientSearchHospitalPanel extends javax.swing.JPanel {
             }
         });
 
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+
         lblSearch.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblSearch.setText("Search");
 
@@ -61,6 +91,11 @@ public class PatientSearchHospitalPanel extends javax.swing.JPanel {
                 "Name", "City", "Community", "Zipcode"
             }
         ));
+        tblViewDoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblViewDocMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblViewDoc);
 
         tblViewDoc1.setModel(new javax.swing.table.DefaultTableModel(
@@ -121,6 +156,24 @@ public class PatientSearchHospitalPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBookAppointmentActionPerformed
 
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        String textBoxString = txtSearch.getText();
+        sorter.setRowFilter(RowFilter.regexFilter(textBoxString));
+    }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void tblViewDocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewDocMouseClicked
+        // TODO add your handling code here:
+        if(tblViewDoc.getSelectedRow()>-1){
+            Hospital c = (Hospital)tblViewDoc.getValueAt(tblViewDoc.getSelectedRow(), 4);
+            fillTable1(c);
+        }
+    }//GEN-LAST:event_tblViewDocMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBookAppointment;
@@ -132,4 +185,42 @@ public class PatientSearchHospitalPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblViewDoc1;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
+private void fillTable() {
+       DefaultTableModel model = (DefaultTableModel)tblViewDoc.getModel();
+       model.setRowCount(0);
+       for(Hospital  p : SystemAdmin.hospitalList ){
+           
+           Object[] row = new Object[5];
+           row[0]= p.getHospitalName();
+           row[1]= p.getCommunity().getCity();
+           row[2]= p.getCommunity();
+           
+           row[3]= p.getCommunity().getCity().getZipcode();
+           row[4]= p;
+          
+           
+           
+           model.addRow(row);
+       }
+}
+
+    private void fillTable1(Hospital c) {
+      DefaultTableModel model = (DefaultTableModel)tblViewDoc1.getModel();
+      System.out.println(SystemAdmin.doctorList);
+       model.setRowCount(0);
+       for(Doctor  p : SystemAdmin.doctorList ){
+           if(p.hospital == c){
+                Object[] row = new Object[3];
+                row[0]= p.name;
+                row[1]= p.docId;
+                row[2]=p;
+
+
+
+                model.addRow(row);
+           }
+       }
+    }
+
 }

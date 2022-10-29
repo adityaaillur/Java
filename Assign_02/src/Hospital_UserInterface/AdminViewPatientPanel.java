@@ -4,10 +4,14 @@
  */
 package Hospital_UserInterface;
 
+import HospitalMngmt.Doctor;
 import HospitalMngmt.Patient;
 import HospitalMngmt.SystemAdmin;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -18,10 +22,31 @@ public class AdminViewPatientPanel extends javax.swing.JPanel {
     /**
      * Creates new form AdminViewPatientPanel
      */
+    
+    private TableRowSorter<TableModel> sorter; 
+    /**
+     * Creates new form AdminDoctorJPanel
+     */
     public AdminViewPatientPanel() {
         initComponents();
-        fillTable();
+         fillTable();
+         
     }
+    
+    
+    
+//public class SystemAdminSearchPatientJPanel extends javax.swing.JPanel {
+//private TableRowSorter<TableModel> sorter; 
+//    /**
+//     * Creates new form AdminDoctorJPanel
+//     */
+//    public SystemAdminSearchPatientJPanel() {
+//        initComponents();
+//         fillTable();
+//        sorter = new TableRowSorter<TableModel>(patientTable.getModel());
+//        patientTable.setRowSorter(sorter);
+//    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -124,6 +149,17 @@ public class AdminViewPatientPanel extends javax.swing.JPanel {
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
+            }
+        });
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
             }
         });
 
@@ -258,7 +294,7 @@ public class AdminViewPatientPanel extends javax.swing.JPanel {
         }
        
         if(tblViewPatient.getSelectedRowCount() == 1){
-          Patient p = (Patient)model.getValueAt(tblViewPatient.getSelectedRow(), 8);
+          Patient p = (Patient)model.getValueAt(tblViewPatient.getSelectedRow(), 7);
          
           p.patientID=Integer.parseInt(txtPatientID.getText());
           p.city=txtCity.getText();
@@ -289,6 +325,12 @@ public class AdminViewPatientPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblViewPatient.getModel();
+        Patient p = (Patient)model.getValueAt(tblViewPatient.getSelectedRow(), 7);
+        if(p!= null){
+            SystemAdmin.patientList.remove(p);
+            fillTable();
+        }
         
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -305,6 +347,16 @@ public class AdminViewPatientPanel extends javax.swing.JPanel {
         txtUsername.setText(p.username);
         txtPassword.setText(p.password);
     }//GEN-LAST:event_tblViewPatientMouseClicked
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        String textBoxString = txtSearch.getText();
+        sorter.setRowFilter(RowFilter.regexFilter(textBoxString));
+    }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

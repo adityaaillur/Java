@@ -15,7 +15,6 @@ public class Patient  {
    public String password;
    public String name;
    public String gender;
-  
    public String city;
    public String community;
    public int patientID;
@@ -34,4 +33,4 @@ public class Patient  {
         this.patientID = patientID;
     }
    
-    }
+}

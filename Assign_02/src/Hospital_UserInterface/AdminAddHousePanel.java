@@ -165,7 +165,7 @@ public class AdminAddHousePanel extends javax.swing.JPanel {
          fillTable2();
         }
         else{
-             JOptionPane.showMessageDialog(null, "Please Select City");
+             JOptionPane.showMessageDialog(null, "Please Select Community");
         }
         
         

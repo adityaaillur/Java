@@ -6,8 +6,12 @@ package Hospital_UserInterface;
 
 import javax.swing.table.DefaultTableModel;
 import HospitalMngmt.Doctor;
+import HospitalMngmt.Hospital;
 import HospitalMngmt.SystemAdmin;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 
 /**
@@ -19,9 +23,14 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
     /**
      * Creates new form AdminViewDoctorPanel
      */
+    
+    private TableRowSorter<TableModel> sorter; 
+    
     public AdminViewDoctorPanel() {
         initComponents();
         fillTable();
+        sorter = new TableRowSorter<>(tblViewDoc.getModel());
+        tblViewDoc.setRowSorter(sorter);
     }
 
     /**
@@ -33,14 +42,12 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtCity = new javax.swing.JTextField();
-        txtCommunity = new javax.swing.JTextField();
+        txtHospital = new javax.swing.JTextField();
         btnName = new javax.swing.JLabel();
-        lblage = new javax.swing.JLabel();
+        lblHospital = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtDoctorID = new javax.swing.JTextField();
-        lblCommunity = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
         lblgen = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
@@ -60,8 +67,8 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
         btnName.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         btnName.setText("Name");
 
-        lblage.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
-        lblage.setText("City");
+        lblHospital.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
+        lblHospital.setText("Hospital");
 
         lblName.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblName.setText("Doctor ID");
@@ -76,9 +83,6 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
                 txtDoctorIDKeyReleased(evt);
             }
         });
-
-        lblCommunity.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
-        lblCommunity.setText("Community");
 
         btnUpdate.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         btnUpdate.setText("Update");
@@ -103,17 +107,17 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
 
         tblViewDoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Gender", "Specialisation", "City", "Community", "Username", "Password", "DoctorObject"
+                "ID", "Name", "Gender", "Specialisation", "Hospital", "Username", "Password", "DoctorObject"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, true, true, false, true
+                true, true, true, true, true, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -125,11 +129,12 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
                 tblViewDocMouseClicked(evt);
             }
         });
+        tblViewDoc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblViewDocKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblViewDoc);
-        if (tblViewDoc.getColumnModel().getColumnCount() > 0) {
-            tblViewDoc.getColumnModel().getColumn(4).setHeaderValue("City");
-            tblViewDoc.getColumnModel().getColumn(5).setHeaderValue("Community");
-        }
 
         btnGender.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         btnGender.setText("Gender");
@@ -139,6 +144,17 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
+            }
+        });
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
             }
         });
 
@@ -168,16 +184,14 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblage)
-                            .addComponent(lblCommunity)
+                            .addComponent(lblHospital)
                             .addComponent(lblgen)
                             .addComponent(lblstDt1)
                             .addComponent(lblUsername))
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCity)
+                            .addComponent(txtHospital)
                             .addComponent(txtSpecialisation)
-                            .addComponent(txtCommunity, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtUsername)
                             .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(70, 70, 70)
@@ -229,12 +243,8 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
                     .addComponent(lblgen))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblage))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCommunity))
+                    .addComponent(txtHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHospital))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,7 +254,7 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblstDt1)
                     .addComponent(btnUpdate))
-                .addContainerGap())
+                .addGap(50, 50, 50))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -273,10 +283,11 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
     private void tblViewDocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewDocMouseClicked
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)tblViewDoc.getModel();
-        Doctor p = (Doctor)model.getValueAt(tblViewDoc.getSelectedRow(), 8);
+        Doctor p = (Doctor)model.getValueAt(tblViewDoc.getSelectedRow(), 7);
         txtDoctorID.setText(String.valueOf(p.docId));
         txtName.setText(p.name);
         txtGender.setText(p.gender);
+        txtHospital.setText(p.hospital.getHospitalName());
         txtSpecialisation.setText(p.specialisation);
         txtUsername.setText(p.username);
         txtPassword.setText(p.password);
@@ -285,7 +296,7 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)tblViewDoc.getModel();
-        Doctor p = (Doctor)model.getValueAt(tblViewDoc.getSelectedRow(), 8);
+        Doctor p = (Doctor)model.getValueAt(tblViewDoc.getSelectedRow(), 7);
         if(p!= null){
             SystemAdmin.doctorList.remove(p);
             fillTable();
@@ -303,7 +314,7 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
         }
        
         if(tblViewDoc.getSelectedRowCount() == 1){
-          Doctor p = (Doctor)model.getValueAt(tblViewDoc.getSelectedRow(), 8);
+          Doctor p = (Doctor)model.getValueAt(tblViewDoc.getSelectedRow(), 7);
          
           p.docId=Integer.parseInt( txtDoctorID.getText());
 //          p.city=city.getText();
@@ -313,7 +324,8 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
           p.name=txtName.getText();
           p.username=txtUsername.getText();
           p.password=txtPassword.getText();
-          
+//          p.hospital = (Hospital)txtHospital.getText();
+//          
             //if single row is selected then update
          fillTable();
             JOptionPane.showMessageDialog(this, "Update Successful !!!");
@@ -333,6 +345,23 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void tblViewDocKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblViewDocKeyReleased
+        // TODO add your handling code here:
+//        String textBoxString = txtSearch.getText();
+//        sorter.setRowFilter(RowFilter.regexFilter(textBoxString));
+    }//GEN-LAST:event_tblViewDocKeyReleased
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        String textBoxString = txtSearch.getText();
+        sorter.setRowFilter(RowFilter.regexFilter(textBoxString));
+    }//GEN-LAST:event_txtSearchKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
@@ -340,19 +369,17 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
     private javax.swing.JLabel btnName;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCommunity;
+    private javax.swing.JLabel lblHospital;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUsername;
-    private javax.swing.JLabel lblage;
     private javax.swing.JLabel lblgen;
     private javax.swing.JLabel lblstDt1;
     private javax.swing.JTable tblViewDoc;
-    private javax.swing.JTextField txtCity;
-    private javax.swing.JTextField txtCommunity;
     private javax.swing.JTextField txtDoctorID;
     private javax.swing.JTextField txtGender;
+    private javax.swing.JTextField txtHospital;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtSearch;
@@ -365,16 +392,16 @@ private void fillTable() {
        model.setRowCount(0);
        for(Doctor  p : SystemAdmin.doctorList ){
            
-           Object[] row = new Object[9];
+           Object[] row = new Object[8];
            row[0]= p.docId;
            row[1]= p.name;
            row[2]= p.gender;
            row[3]= p.specialisation;
-//           row[4]= p.city;
+           row[4]= p.hospital.getHospitalName();
 //           row[5]= p.community;
-           row[6]= p.username;
-           row[7]= p.password;
-           row[8]= p;
+           row[5]= p.username;
+           row[6]= p.password;
+           row[7]= p;
 
            model.addRow(row);
        }}
