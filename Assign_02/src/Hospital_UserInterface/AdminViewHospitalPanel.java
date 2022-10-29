@@ -4,6 +4,11 @@
  */
 package Hospital_UserInterface;
 
+import HospitalMngmt.Doctor;
+import HospitalMngmt.SystemAdmin;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author adityaillur
@@ -30,20 +35,18 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
         lblUsername = new javax.swing.JLabel();
         lblHospitalID = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        txtHospitalID = new javax.swing.JTextField();
+        txtDoctorID = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
         lblAge = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
-        txtAge = new javax.swing.JTextField();
+        txtCommunity = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
-        lblSpecialisation = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
-        txtSpecialisation = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblViewHospital = new javax.swing.JTable();
         lblGender = new javax.swing.JLabel();
-        txtGender = new javax.swing.JTextField();
+        txtCity = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         lblSearch = new javax.swing.JLabel();
@@ -55,16 +58,16 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
         lblUsername.setText("Username");
 
         lblHospitalID.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
-        lblHospitalID.setText("Hospital ID");
+        lblHospitalID.setText("Doctor ID");
 
-        txtHospitalID.addActionListener(new java.awt.event.ActionListener() {
+        txtDoctorID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHospitalIDActionPerformed(evt);
+                txtDoctorIDActionPerformed(evt);
             }
         });
-        txtHospitalID.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtDoctorID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtHospitalIDKeyReleased(evt);
+                txtDoctorIDKeyReleased(evt);
             }
         });
 
@@ -72,23 +75,19 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
         lblPassword.setText("Password");
 
         lblAge.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
-        lblAge.setText("Age");
+        lblAge.setText("Community");
 
         btnUpdate.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         btnUpdate.setText("Update");
-
-        lblSpecialisation.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
-        lblSpecialisation.setText("Specialisation");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         lblTitle.setFont(new java.awt.Font("Silom", 1, 36)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("View Hospital Details");
-
-        txtSpecialisation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSpecialisationActionPerformed(evt);
-            }
-        });
 
         tblViewHospital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,16 +97,21 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Gender", "Age", "Specialisation", "Username", "Password"
+                "ID", "Name", "City", "Community", "Username", "Password", "Hospital Obj"
             }
         ));
         jScrollPane1.setViewportView(tblViewHospital);
 
         lblGender.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
-        lblGender.setText("Gender");
+        lblGender.setText("City");
 
         btnDelete.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         lblSearch.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblSearch.setText("Search");
@@ -123,31 +127,29 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblUsername)
                             .addComponent(lblPassword)
-                            .addComponent(lblSpecialisation)
                             .addComponent(lblAge))
-                        .addGap(53, 53, 53)
+                        .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnUpdate)
                             .addComponent(txtUsername)
-                            .addComponent(txtSpecialisation)
                             .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblHospitalID)
-                                    .addGap(84, 84, 84)
-                                    .addComponent(txtHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtDoctorID, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblName)
                                         .addComponent(lblGender))
-                                    .addGap(122, 122, 122)
+                                    .addGap(139, 139, 139)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnDelete)))
                     .addGroup(layout.createSequentialGroup()
@@ -173,7 +175,7 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDoctorID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblHospitalID)
                     .addComponent(btnDelete))
                 .addGap(18, 18, 18)
@@ -182,16 +184,12 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
                     .addComponent(lblName))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblGender))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAge))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSpecialisation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSpecialisation))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,15 +200,15 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
                     .addComponent(lblPassword))
                 .addGap(33, 33, 33)
                 .addComponent(btnUpdate)
-                .addContainerGap())
+                .addGap(50, 50, 50))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtHospitalIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHospitalIDActionPerformed
+    private void txtDoctorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoctorIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtHospitalIDActionPerformed
+    }//GEN-LAST:event_txtDoctorIDActionPerformed
 
-    private void txtHospitalIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHospitalIDKeyReleased
+    private void txtDoctorIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDoctorIDKeyReleased
         // TODO add your handling code here:
 //        String regexString = "";
 //        Pattern pattern = Pattern.compile(regexString);
@@ -222,11 +220,57 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
 //
 //            System.out.println("Match not found");
 //        }
-    }//GEN-LAST:event_txtHospitalIDKeyReleased
+    }//GEN-LAST:event_txtDoctorIDKeyReleased
 
-    private void txtSpecialisationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSpecialisationActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSpecialisationActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tblViewHospital.getModel();
+        int selectedRowIndex = tblViewHospital.getSelectedRow();
+       
+        if (selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a Row to Update");
+            return;
+        }
+       
+       
+        if(tblViewHospital.getSelectedRowCount() == 1){
+          Doctor p = (Doctor)model.getValueAt(tblViewHospital.getSelectedRow(), 8);
+         
+          p.docId=Integer.parseInt( txtDoctorID.getText());
+//          p.city=city.getText();
+//          p.community= community.getText();
+         
+          p.name=txtName.getText();
+          p.username=txtUsername.getText();
+          p.password=txtPassword.getText();
+          
+            //if single row is selected then update
+         fillTable();
+            JOptionPane.showMessageDialog(this, "Update Successful !!!");
+        }
+        else{
+           
+            if(tblViewHospital.getRowCount () == 0){
+                //if table is empty
+                JOptionPane.showMessageDialog(this, "Table is empty !!!");
+            }
+            else{
+                //if row is not selected or multiple row is selected
+                JOptionPane.showMessageDialog(this, "Please select single row for update !!!");
+
+            }
+        } 
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblViewHospital.getModel();
+        Doctor p = (Doctor)model.getValueAt(tblViewHospital.getSelectedRow(), 8);
+        if(p!= null){
+            SystemAdmin.doctorList.remove(p);
+            fillTable();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -239,17 +283,36 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblSearch;
-    private javax.swing.JLabel lblSpecialisation;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JTable tblViewHospital;
-    private javax.swing.JTextField txtAge;
-    private javax.swing.JTextField txtGender;
-    private javax.swing.JTextField txtHospitalID;
+    private javax.swing.JTextField txtCity;
+    private javax.swing.JTextField txtCommunity;
+    private javax.swing.JTextField txtDoctorID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtSearch;
-    private javax.swing.JTextField txtSpecialisation;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+private void fillTable() {
+       DefaultTableModel model = (DefaultTableModel)tblViewHospital.getModel();
+       model.setRowCount(0);
+       for(Doctor  p : SystemAdmin.doctorList ){
+           
+           Object[] row = new Object[9];
+           row[0]= p.docId;
+           row[1]= p.name;
+           row[2]= p.gender;
+           row[3]= p.specialisation;
+//           row[4]= p.city;
+//           row[5]= p.community;
+           row[6]= p.username;
+           row[7]= p.password;
+           row[8]= p;
+           
+           
+           model.addRow(row);
+       }}
 }
+

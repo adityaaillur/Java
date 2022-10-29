@@ -216,7 +216,8 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
         int id = Integer.parseInt(txtDocID.getText());
 //        int age = Integer.parseInt(txtAge.getText());
         String name = txtName.getText();
-        Doctor doctor = new Doctor(id, txtUsername.getText(), txtPassword.getText(), name, (Hospital)jTable1.getValueAt(jTable1.getSelectedRow(), 1), txtSpecialisation.getText(),  txtGender.getText());
+        Hospital hospital1 = (Hospital)jTable1.getValueAt(jTable1.getSelectedRow(), 1);
+        Doctor doctor = new Doctor(id, name, txtSpecialisation.getText(), txtUsername.getText(), (Hospital)jTable1.getValueAt(jTable1.getSelectedRow(), 1), txtPassword.getText(), txtGender.getText());
         SystemAdmin.doctorList.add(doctor);
         JOptionPane.showMessageDialog(null, "New Doctor Successfully Created.");
     }//GEN-LAST:event_btnSaveActionPerformed

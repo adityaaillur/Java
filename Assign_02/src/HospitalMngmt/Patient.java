@@ -10,39 +10,28 @@ import java.time.LocalDate;
  *
  * @author adityaillur
  */
-public class Patient extends Person {
+public class Patient  {
+    public String username;
+   public String password;
+   public String name;
+   public String gender;
+  
+   public String city;
+   public String community;
+   public int patientID;
+   
+   public boolean verify(String username,String password){
+       if(this.username.equals(username) && this.password.equals(password) )return true;
+       return false;}
 
-    public Patient(int id, String text, String text1, String text2, String text3, String text4, String text5) {
+    public Patient(int patientID, String username, String password, String name, String gender, String city, String community) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.gender = gender;
+        this.city = city;
+        this.community = community;
+        this.patientID = patientID;
     }
-
-    private LocalDate dob;
-    private long phonenumber;
-    private String email;
-
-    public LocalDate getDob() {
-        return dob;
+   
     }
-
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
-    }
-
-    public long getPhonenumber() {
-        return phonenumber;
-    }
-
-    public void setPhonenumber(long phonenumber) {
-        this.phonenumber = phonenumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-    
-    
-}

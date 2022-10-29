@@ -7,6 +7,7 @@ package Hospital_UserInterface;
 import HospitalMngmt.Community;
 import HospitalMngmt.Hospital;
 import HospitalMngmt.SystemAdmin;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -137,6 +138,11 @@ public class AdminAddHospitalPanel extends javax.swing.JPanel {
         if(jTable1.getSelectedRow()>-1){
             String name = txtName.getText();
             Hospital hospital = new Hospital(txtName.getText(), txtUsername.getText(), txtPassword.getText(), (Community)jTable1.getValueAt(jTable1.getSelectedRow(), 1));
+            SystemAdmin.hospitalList.add(hospital);
+            JOptionPane.showMessageDialog(null, "Added Hospital.");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Select Community");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 

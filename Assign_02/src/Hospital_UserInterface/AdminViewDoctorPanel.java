@@ -82,6 +82,11 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
 
         btnUpdate.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         lblgen.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblgen.setText("Specialisation");
@@ -121,12 +126,21 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblViewDoc);
+        if (tblViewDoc.getColumnModel().getColumnCount() > 0) {
+            tblViewDoc.getColumnModel().getColumn(4).setHeaderValue("City");
+            tblViewDoc.getColumnModel().getColumn(5).setHeaderValue("Community");
+        }
 
         btnGender.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         btnGender.setText("Gender");
 
         btnDelete.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         lblSearch.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblSearch.setText("Search");
@@ -267,6 +281,57 @@ public class AdminViewDoctorPanel extends javax.swing.JPanel {
         txtUsername.setText(p.username);
         txtPassword.setText(p.password);
     }//GEN-LAST:event_tblViewDocMouseClicked
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblViewDoc.getModel();
+        Doctor p = (Doctor)model.getValueAt(tblViewDoc.getSelectedRow(), 8);
+        if(p!= null){
+            SystemAdmin.doctorList.remove(p);
+            fillTable();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblViewDoc.getModel();
+        int selectedRowIndex = tblViewDoc.getSelectedRow();
+       
+        if (selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a Row to Update");
+            return;
+        }
+       
+        if(tblViewDoc.getSelectedRowCount() == 1){
+          Doctor p = (Doctor)model.getValueAt(tblViewDoc.getSelectedRow(), 8);
+         
+          p.docId=Integer.parseInt( txtDoctorID.getText());
+//          p.city=city.getText();
+//          p.community= community.getText();
+          p.specialisation=txtSpecialisation.getText();
+          p.gender=txtGender.getText();
+          p.name=txtName.getText();
+          p.username=txtUsername.getText();
+          p.password=txtPassword.getText();
+          
+            //if single row is selected then update
+         fillTable();
+            JOptionPane.showMessageDialog(this, "Update Successful !!!");
+        }
+        else{
+           
+            if(tblViewDoc.getRowCount () == 0){
+                //if table is empty
+                JOptionPane.showMessageDialog(this, "Table is empty !!!");
+            }
+            else{
+                //if row is not selected or multiple row is selected
+                JOptionPane.showMessageDialog(this, "Please select single row for update !!!");
+
+            }
+        }        
+        
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

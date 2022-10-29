@@ -217,7 +217,7 @@ public class AdminAddPatientPanel extends javax.swing.JPanel {
 //         String name = name.getText();
          Patient patient = new Patient(id, txtUsername.getText(), txtPassword.getText(), txtName.getText(), txtGender.getText(), txtCity.getText(), txtCommunity.getText());
          SystemAdmin.patientList.add(patient);
-         JOptionPane.showMessageDialog(null, "Added Patient.");  
+         JOptionPane.showMessageDialog(null, "Added Patient.");
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed

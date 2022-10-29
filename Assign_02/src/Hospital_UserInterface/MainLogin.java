@@ -145,7 +145,7 @@ public class MainLogin extends javax.swing.JFrame {
     private void btnHosAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHosAdminActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new HospitalLogin().setVisible(true);  
+        new HospitalAdminLogin().setVisible(true);  
     }//GEN-LAST:event_btnHosAdminActionPerformed
 
     /**

@@ -4,6 +4,10 @@
  */
 package Hospital_UserInterface;
 
+import HospitalMngmt.Doctor;
+import HospitalMngmt.SystemAdmin;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author adityaillur
@@ -107,6 +111,25 @@ public class DoctorLogin extends javax.swing.JFrame {
         //        {
             //            JOptionPane.showMessageDialog(this,"Please enter valid credentials");
             //        }
+            
+        String user;
+        String pass;
+        user=TxtUser.getText();
+        pass=TxtPass.getText();
+//        adminpanel p=new adminpanel();
+        for(Doctor temp:SystemAdmin.doctorList){
+            if(temp.verify(user, pass)){
+                this.dispose();
+                this.setVisible(false);
+                new DoctorPage(temp).setVisible(true);
+                return;
+            }
+        }
+        
+      
+        
+            JOptionPane.showMessageDialog(this,"Incorrect Admin Username & Password");
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
