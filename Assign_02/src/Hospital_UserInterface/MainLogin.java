@@ -27,58 +27,78 @@ public class MainLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lbl_login = new javax.swing.JLabel();
-        jbtn_sysad = new javax.swing.JButton();
-        jbtn_comad = new javax.swing.JButton();
-        jbtn_doc = new javax.swing.JButton();
-        jbtn_pat = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        lblLogin = new javax.swing.JLabel();
+        btnSysAdmin = new javax.swing.JButton();
+        btnComAdmin = new javax.swing.JButton();
+        btnDoc = new javax.swing.JButton();
+        btnPatient = new javax.swing.JButton();
+        btnHosAdmin = new javax.swing.JButton();
         lblBack = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_login.setBackground(new java.awt.Color(51, 204, 255));
-        lbl_login.setFont(new java.awt.Font("Phosphate", 1, 48)); // NOI18N
-        lbl_login.setText("LOGIN AS");
-        lbl_login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(lbl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 210, 70));
+        lblLogin.setBackground(new java.awt.Color(51, 204, 255));
+        lblLogin.setFont(new java.awt.Font("Phosphate", 1, 48)); // NOI18N
+        lblLogin.setText("LOGIN AS");
+        lblLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 210, 70));
 
-        jbtn_sysad.setBackground(new java.awt.Color(204, 204, 204));
-        jbtn_sysad.setFont(new java.awt.Font("Telugu MN", 1, 18)); // NOI18N
-        jbtn_sysad.setText("System Admin");
-        jbtn_sysad.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jbtn_sysad.addActionListener(new java.awt.event.ActionListener() {
+        btnSysAdmin.setBackground(new java.awt.Color(204, 204, 204));
+        btnSysAdmin.setFont(new java.awt.Font("Telugu MN", 1, 18)); // NOI18N
+        btnSysAdmin.setText("System Admin");
+        btnSysAdmin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSysAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtn_sysadActionPerformed(evt);
+                btnSysAdminActionPerformed(evt);
             }
         });
-        jPanel1.add(jbtn_sysad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 140, 60));
+        jPanel1.add(btnSysAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 140, 60));
 
-        jbtn_comad.setBackground(new java.awt.Color(204, 204, 204));
-        jbtn_comad.setFont(new java.awt.Font("Telugu MN", 1, 18)); // NOI18N
-        jbtn_comad.setText("Community Admin");
-        jbtn_comad.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jbtn_comad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, -1, 60));
+        btnComAdmin.setBackground(new java.awt.Color(204, 204, 204));
+        btnComAdmin.setFont(new java.awt.Font("Telugu MN", 1, 18)); // NOI18N
+        btnComAdmin.setText("Community Admin");
+        btnComAdmin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnComAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComAdminActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnComAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, -1, 60));
 
-        jbtn_doc.setBackground(new java.awt.Color(204, 204, 204));
-        jbtn_doc.setFont(new java.awt.Font("Telugu MN", 1, 18)); // NOI18N
-        jbtn_doc.setText("Doctor");
-        jbtn_doc.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jbtn_doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 110, 60));
+        btnDoc.setBackground(new java.awt.Color(204, 204, 204));
+        btnDoc.setFont(new java.awt.Font("Telugu MN", 1, 18)); // NOI18N
+        btnDoc.setText("Doctor");
+        btnDoc.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDocActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 110, 60));
 
-        jbtn_pat.setBackground(new java.awt.Color(204, 204, 204));
-        jbtn_pat.setFont(new java.awt.Font("Telugu MN", 1, 18)); // NOI18N
-        jbtn_pat.setText("Patient");
-        jbtn_pat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jbtn_pat, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 110, 60));
+        btnPatient.setBackground(new java.awt.Color(204, 204, 204));
+        btnPatient.setFont(new java.awt.Font("Telugu MN", 1, 18)); // NOI18N
+        btnPatient.setText("Patient");
+        btnPatient.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPatientActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 110, 60));
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("October Devanagari", 1, 18)); // NOI18N
-        jButton1.setText("Hospital Admin");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 380, 170, 60));
+        btnHosAdmin.setBackground(new java.awt.Color(204, 204, 204));
+        btnHosAdmin.setFont(new java.awt.Font("October Devanagari", 1, 18)); // NOI18N
+        btnHosAdmin.setText("Hospital Admin");
+        btnHosAdmin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnHosAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHosAdminActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnHosAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 380, 170, 60));
 
         lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hospital_UserInterface/Hospital Mnagement.jpg"))); // NOI18N
         lblBack.setText("jLabel1");
@@ -98,10 +118,35 @@ public class MainLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtn_sysadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_sysadActionPerformed
+    private void btnSysAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSysAdminActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jbtn_sysadActionPerformed
+        this.setVisible(false);
+        new SysAdminLogin().setVisible(true);   
+    }//GEN-LAST:event_btnSysAdminActionPerformed
+
+    private void btnComAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComAdminActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new CommunityLogin().setVisible(true);  
+    }//GEN-LAST:event_btnComAdminActionPerformed
+
+    private void btnDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDocActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new DoctorLogin().setVisible(true);  
+    }//GEN-LAST:event_btnDocActionPerformed
+
+    private void btnPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new PatientLogin().setVisible(true);  
+    }//GEN-LAST:event_btnPatientActionPerformed
+
+    private void btnHosAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHosAdminActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new HospitalLogin().setVisible(true);  
+    }//GEN-LAST:event_btnHosAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,13 +184,13 @@ public class MainLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnComAdmin;
+    private javax.swing.JButton btnDoc;
+    private javax.swing.JButton btnHosAdmin;
+    private javax.swing.JButton btnPatient;
+    private javax.swing.JButton btnSysAdmin;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton jbtn_comad;
-    private javax.swing.JButton jbtn_doc;
-    private javax.swing.JButton jbtn_pat;
-    private javax.swing.JButton jbtn_sysad;
     private javax.swing.JLabel lblBack;
-    private javax.swing.JLabel lbl_login;
+    private javax.swing.JLabel lblLogin;
     // End of variables declaration//GEN-END:variables
 }

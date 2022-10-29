@@ -32,6 +32,8 @@ public class HospitalLogin extends javax.swing.JFrame {
         TxtUser = new javax.swing.JTextField();
         TxtPass = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         lblBack = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,8 +54,24 @@ public class HospitalLogin extends javax.swing.JFrame {
         lblTitle.setText("hospital Login ");
         jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, -1, -1));
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, -1, -1));
+
+        btnLogin.setBackground(new java.awt.Color(204, 204, 204));
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, -1, -1));
+
         lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hospital_UserInterface/back_ground.jpg"))); // NOI18N
-        lblBack.setText("jLabel3");
         jPanel1.add(lblBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -69,6 +87,29 @@ public class HospitalLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new MainLogin().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        //        if("systemadmin".equals(txtUsername.getText()) && "Iamadmin".equals(txtPassword.getText()))
+        //        {
+            //            adminOperations adminobj = new adminOperations();
+            //            adminobj.setVisible(true);
+            //            dispose();
+            //
+            //        }
+        //        else
+        //        {
+            //            JOptionPane.showMessageDialog(this,"Please enter valid credentials");
+            //        }
+        this.setVisible(false);
+        new HospitalPage().setVisible(true);
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,6 +152,8 @@ public class HospitalLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TxtPass;
     private javax.swing.JTextField TxtUser;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBack;
     private javax.swing.JLabel lblPassword;

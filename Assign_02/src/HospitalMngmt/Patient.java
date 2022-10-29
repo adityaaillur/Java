@@ -12,6 +12,9 @@ import java.time.LocalDate;
  */
 public class Patient extends Person {
 
+    public Patient(int id, String text, String text1, String text2, String text3, String text4, String text5) {
+    }
+
     private LocalDate dob;
     private long phonenumber;
     private String email;

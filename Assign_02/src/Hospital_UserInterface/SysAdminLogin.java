@@ -4,16 +4,19 @@
  */
 package Hospital_UserInterface;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author adityaillur
  */
-public class SysAdmin extends javax.swing.JFrame {
-
+public class SysAdminLogin extends javax.swing.JFrame {
+    private static String systemUserName =""; //"sysAdmin";
+    private static String systemPassword = "";//"sysPass";
     /**
      * Creates new form SysAdmin
      */
-    public SysAdmin() {
+    public SysAdminLogin() {
         initComponents();
     }
 
@@ -29,10 +32,12 @@ public class SysAdmin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblUsername = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        TxtUser = new javax.swing.JTextField();
-        TxtPass = new javax.swing.JTextField();
+        txtUser = new javax.swing.JTextField();
+        txtPass = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
-        lblBack = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,16 +50,32 @@ public class SysAdmin extends javax.swing.JFrame {
         lblPassword.setFont(new java.awt.Font("October Devanagari", 3, 24)); // NOI18N
         lblPassword.setText("Password");
         jPanel1.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 120, 40));
-        jPanel1.add(TxtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 190, 40));
-        jPanel1.add(TxtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 190, 40));
+        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 190, 40));
+        jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 190, 40));
 
         lblTitle.setFont(new java.awt.Font("Phosphate", 1, 48)); // NOI18N
         lblTitle.setText("System Admin Login ");
         jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
 
-        lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hospital_UserInterface/back_ground.jpg"))); // NOI18N
-        lblBack.setText("jLabel3");
-        jPanel1.add(lblBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 570));
+        btnLogin.setBackground(new java.awt.Color(204, 204, 204));
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, -1, -1));
+
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hospital_UserInterface/back_ground.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,6 +90,43 @@ public class SysAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+//        if("systemadmin".equals(txtUsername.getText()) && "Iamadmin".equals(txtPassword.getText()))
+//        {
+//            adminOperations adminobj = new adminOperations();
+//            adminobj.setVisible(true);
+//            dispose();
+//            
+//        }
+//        else
+//        {
+//            JOptionPane.showMessageDialog(this,"Please enter valid credentials");
+//        }
+        String user;
+        String pass;
+        user=txtUser.getText();
+        pass=txtPass.getText();
+//        adminpanel p=new adminpanel();
+        if(user.equals(systemUserName)&&pass.equals(systemPassword))
+        {
+            this.dispose();
+//            p.setVisible(true);
+        this.setVisible(false);
+        new AdminPage().setVisible(true); 
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this,"Incorrect Admin Username & Password");
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new MainLogin().setVisible(true);  
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,31 +145,35 @@ public class SysAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SysAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SysAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SysAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SysAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SysAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SysAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SysAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SysAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new SysAdmin().setVisible(true);
+                new SysAdminLogin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TxtPass;
-    private javax.swing.JTextField TxtUser;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblBack;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUsername;
+    private javax.swing.JTextField txtPass;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

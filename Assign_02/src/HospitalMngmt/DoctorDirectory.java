@@ -25,12 +25,10 @@ public class DoctorDirectory {
     public void setDirectory(ArrayList<Doctor> directory) {
         this.directory = directory;
     }
-    
+
     public Doctor addNewDoctor(){
         Doctor doc = new Doctor();
         directory.add(doc);
         return doc;
     }
-    
-    
 }

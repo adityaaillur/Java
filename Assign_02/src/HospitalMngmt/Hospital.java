@@ -13,33 +13,33 @@ import java.util.Objects;
  */
 public class Hospital {
     
-    private int hospitalId;
-    private String name;
+    private String hospitalName;
+    private String username;
+    private String password;
     private Community community;
-    List<Doctor>doctors;
 
-    public Hospital() {
-    }
-    
-    public Hospital(int hospitalId, String name) {
-        this.hospitalId = hospitalId;
-        this.name = name;
+    public String getHospitalName() {
+        return hospitalName;
     }
 
-    public int getHospitalId() {
-        return hospitalId;
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
     }
 
-    public void setHospitalId(int hospitalId) {
-        this.hospitalId = hospitalId;
+    public String getUsername() {
+        return username;
     }
 
-    public String getName() {
-        return name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Community getCommunity() {
@@ -49,30 +49,11 @@ public class Hospital {
     public void setCommunity(Community community) {
         this.community = community;
     }
-    
-    
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Hospital other = (Hospital) obj;
-        if (this.hospitalId != other.hospitalId) {
-            return false;
-        }
-        return Objects.equals(this.name, other.name);
+    public Hospital(String hospitalName, String username, String password, Community community) {
+        this.hospitalName = hospitalName;
+        this.username = username;
+        this.password = password;
+        this.community = community;
     }
-
-    @Override
-    public String toString() {
-        return "Hospital{" + "hospitalId=" + hospitalId + ", name=" + name + '}';
-    }
-    
 }

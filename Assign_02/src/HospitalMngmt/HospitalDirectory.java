@@ -5,7 +5,6 @@
 package HospitalMngmt;
 
 import java.util.ArrayList;
-import HospitalMngmt.Hospital;
 
 /**
  *
@@ -27,10 +26,4 @@ public class HospitalDirectory {
         this.directory = directory;
     }
     
-    public Hospital addNewHospital(){
-        
-        Hospital hospital = new Hospital();
-        directory.add(hospital);
-        return hospital;
-    }
 }

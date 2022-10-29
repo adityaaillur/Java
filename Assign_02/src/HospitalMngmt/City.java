@@ -10,8 +10,40 @@ package HospitalMngmt;
  */
 public class City {
     private String name;
-    private String hospitalList;
-    private String communityList;
     private int zipcode;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public int getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(int zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public City(String name, int zipcode) {
+        this.name = name;
+
+        this.zipcode = zipcode;
+    }
+
+    @Override
+    public String toString() {
+        return "City{" + "name=" + name + ", zipcode=" + zipcode + '}';
+    }
+    
+    
+
+ 
+    
+    
     
 }
