@@ -4,6 +4,7 @@
  */
 package Hospital_UserInterface;
 
+import HospitalMngmt.Hospital;
 import HospitalMngmt.Patient;
 
 /**
@@ -11,7 +12,7 @@ import HospitalMngmt.Patient;
  * @author adityaillur
  */
 public class PatientPage extends javax.swing.JFrame {
-    private Patient patient = null;
+    private Patient patient;
     /**
      * Creates new form AdminDoctorPage
      */
@@ -140,6 +141,7 @@ public class PatientPage extends javax.swing.JFrame {
 
     private void btnEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncounterActionPerformed
         // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new PatientEncounterHistoryPanel(this.patient));   
     }//GEN-LAST:event_btnEncounterActionPerformed
 
     private void btnSearchHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchHospitalActionPerformed
@@ -149,6 +151,8 @@ public class PatientPage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        new MainLogin().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -176,7 +180,7 @@ public class PatientPage extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PatientPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        //</editor-fold> 
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

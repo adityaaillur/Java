@@ -122,7 +122,7 @@ public class DoctorPage extends javax.swing.JFrame {
 
     private void btnViewAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAppointmentActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new DoctorViewAppointmentPanel());
+        jSplitPane1.setRightComponent(new DoctorViewAppointmentPanel(p));
     }//GEN-LAST:event_btnViewAppointmentActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

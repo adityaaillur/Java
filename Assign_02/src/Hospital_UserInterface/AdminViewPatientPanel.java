@@ -29,7 +29,9 @@ public class AdminViewPatientPanel extends javax.swing.JPanel {
      */
     public AdminViewPatientPanel() {
         initComponents();
-         fillTable();
+        sorter = new TableRowSorter<>(tblViewPatient.getModel());
+        tblViewPatient.setRowSorter(sorter);
+        fillTable();
          
     }
     
@@ -355,7 +357,7 @@ public class AdminViewPatientPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:   
     }//GEN-LAST:event_txtSearchActionPerformed
 
 

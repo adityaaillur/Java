@@ -168,10 +168,8 @@ public class AdminDoctorPage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminDoctorPage().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new AdminDoctorPage().setVisible(true);
         });
     }
 

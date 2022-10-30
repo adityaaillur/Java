@@ -4,24 +4,30 @@
  */
 package Hospital_UserInterface;
 
+import HospitalMngmt.Encounter;
+import HospitalMngmt.Doctor;
+import HospitalMngmt.SystemAdmin;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
 
 /**
  *
  * @author adityaillur
  */
 public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
-
+    public Doctor doctor;
+    private TableRowSorter<TableModel> sorter; 
     /**
-     * Creates new form AdminViewHospitalPanel
+     * Creates new form DoctorViewAppointment
      */
-    
-    private TableRowSorter<TableModel> sorter;
-    
-    public DoctorViewAppointmentPanel() {
+    public DoctorViewAppointmentPanel(Doctor p) {
         initComponents();
+        doctor=p;
+        fillTable();
         sorter = new TableRowSorter<>(tblViewHospital.getModel());
         tblViewHospital.setRowSorter(sorter);
     }
@@ -41,9 +47,7 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
         txtName = new javax.swing.JTextField();
         txtPatientID = new javax.swing.JTextField();
         lblVitalSigns = new javax.swing.JLabel();
-        lblAge = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
-        txtAge = new javax.swing.JTextField();
         txtCommunity = new javax.swing.JTextField();
         lblSpecialisation = new javax.swing.JLabel();
         txtVitalSigns = new javax.swing.JTextField();
@@ -79,9 +83,6 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
         lblVitalSigns.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblVitalSigns.setText("Vital Signs");
 
-        lblAge.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
-        lblAge.setText("Age");
-
         btnUpdate.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +93,12 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
 
         lblSpecialisation.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblSpecialisation.setText("City");
+
+        txtVitalSigns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVitalSignsActionPerformed(evt);
+            }
+        });
 
         lblTitle.setFont(new java.awt.Font("Silom", 1, 36)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -105,15 +112,20 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
 
         tblViewHospital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Gender", "City", "Community", "Vital Signs"
+                "ID", "Name", "Gender", "City", "Community", "Vital Signs", "Encounter Obj"
             }
         ));
+        tblViewHospital.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblViewHospitalMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblViewHospital);
 
         lblGender.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
@@ -133,42 +145,43 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCommunity)
                     .addComponent(lblVitalSigns)
                     .addComponent(lblSpecialisation)
-                    .addComponent(lblAge)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPatientID)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblName)
-                                    .addComponent(lblGender))
-                                .addGap(122, 122, 122)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtCommunity)
-                                        .addComponent(txtCity)
-                                        .addComponent(txtVitalSigns, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnUpdate)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtCommunity)
+                                .addComponent(txtCity)
+                                .addComponent(txtVitalSigns, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnUpdate)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblPatientID)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblName)
+                                .addComponent(lblGender))
+                            .addGap(122, 122, 122)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(2, 2, 2)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblSearch)
                         .addGap(122, 122, 122)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(78, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,16 +209,13 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAge)
-                        .addGap(18, 18, 18)
+                        .addGap(1, 1, 1)
                         .addComponent(lblSpecialisation)
                         .addGap(20, 20, 20)
                         .addComponent(lblCommunity)
                         .addGap(18, 18, 18)
                         .addComponent(lblVitalSigns))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,7 +223,7 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
                         .addComponent(txtVitalSigns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21)
                 .addComponent(btnUpdate)
-                .addGap(20, 20, 20))
+                .addGap(61, 61, 61))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -249,13 +259,39 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        String vitals = txtVitalSigns.getText();
+        DefaultTableModel model = (DefaultTableModel)tblViewHospital.getModel();
+        Encounter p = (Encounter)model.getValueAt(tblViewHospital.getSelectedRow(), 6);
+        p.vitalSigns=vitals;
+        fillTable();
+        SystemAdmin.doctorList.add(doctor);
+        JOptionPane.showMessageDialog(null, "Vitals Added");
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void tblViewHospitalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewHospitalMouseClicked
+        // TODO add your handling code here:
+        if(tblViewHospital.getSelectedRow()>-1 ){
+            DefaultTableModel model = (DefaultTableModel)tblViewHospital.getModel();
+        
+            Encounter p = (Encounter)model.getValueAt(tblViewHospital.getSelectedRow(), 6);
+            txtPatientID.setText(String.valueOf(p.patient.patientID));
+
+            txtName.setText(p.patient.name);
+            txtGender.setText(p.patient.gender);
+
+            txtCity.setText(p.patient.city);
+            txtCommunity.setText(p.patient.community);
+        }
+    }//GEN-LAST:event_tblViewHospitalMouseClicked
+
+    private void txtVitalSignsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVitalSignsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVitalSignsActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblCommunity;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblName;
@@ -265,7 +301,6 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblVitalSigns;
     private javax.swing.JTable tblViewHospital;
-    private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtCommunity;
     private javax.swing.JTextField txtGender;
@@ -274,4 +309,26 @@ public class DoctorViewAppointmentPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtVitalSigns;
     // End of variables declaration//GEN-END:variables
+
+private void fillTable() {
+       DefaultTableModel model = (DefaultTableModel)tblViewHospital.getModel();
+       model.setRowCount(0);
+       for(Encounter  p : SystemAdmin.encounterList ){
+           if(p.doctor==this.doctor){
+           Object[] row = new Object[7];
+           row[0]= p.patient.patientID;
+           row[1]= p.patient.name;
+           
+           row[2]= p.patient.gender;
+           row[3]= p.patient.city;
+           
+           
+           row[4]= p.patient.community;
+//           row[5]=p.vitalSigns;           
+           row[6]= p;
+           
+           
+           model.addRow(row);
+       }}}
+
 }

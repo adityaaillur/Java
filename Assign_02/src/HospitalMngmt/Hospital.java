@@ -56,4 +56,8 @@ public class Hospital {
         this.password = password;
         this.community = community;
     }
+
+    public boolean verify(String user, String pass) {
+        return user.equals(username) && pass.equals(password);
+    }
 }

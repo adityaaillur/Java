@@ -24,14 +24,15 @@ import javax.swing.table.TableRowSorter;
  */
 public class PatientSearchHospitalPanel extends javax.swing.JPanel {
     private Patient patient;
-private TableRowSorter<TableModel> sorter; 
+    private TableRowSorter<TableModel> sorter; 
     /**
      * Creates new form PatientSearchHospital
+     * @param patient
      */
     public PatientSearchHospitalPanel(Patient patient) {
         initComponents();
         fillTable();
-        sorter = new TableRowSorter<TableModel>(tblViewDoc.getModel());
+        sorter = new TableRowSorter<>(tblViewDoc.getModel());
         tblViewDoc.setRowSorter(sorter);
         this.patient = patient;
     }
@@ -82,13 +83,13 @@ private TableRowSorter<TableModel> sorter;
 
         tblViewDoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Name", "City", "Community", "Zipcode"
+                "Name", "City", "Community", "Zipcode", "Hospital Obj"
             }
         ));
         tblViewDoc.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,10 +107,13 @@ private TableRowSorter<TableModel> sorter;
                 {null, null, null}
             },
             new String [] {
-                "Doctor ID", "Doctor Name", "object"
+                "Doctor Name", "Doctor ID", "Doctor Obj"
             }
         ));
         jScrollPane2.setViewportView(tblViewDoc1);
+        if (tblViewDoc1.getColumnModel().getColumnCount() > 0) {
+            tblViewDoc1.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,6 +158,14 @@ private TableRowSorter<TableModel> sorter;
 
     private void btnBookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAppointmentActionPerformed
         // TODO add your handling code here:
+        if(tblViewDoc.getSelectedRow()>-1 && tblViewDoc1.getSelectedRow()>-1){
+            Hospital c = (Hospital)tblViewDoc.getValueAt(tblViewDoc.getSelectedRow(), 4);
+            Doctor d = (Doctor)tblViewDoc1.getValueAt(tblViewDoc1.getSelectedRow(), 2);
+            Encounter e = new Encounter(d,this.patient);
+            SystemAdmin.encounterList.add(e);
+           
+            JOptionPane.showMessageDialog(null, "Appoointment Booked");
+        }
     }//GEN-LAST:event_btnBookAppointmentActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed

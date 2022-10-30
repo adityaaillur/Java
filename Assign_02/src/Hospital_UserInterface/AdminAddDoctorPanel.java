@@ -215,7 +215,6 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
     // TODO add your handling code here:
     if(jTable1.getSelectedRow()>-1){
         int id = Integer.parseInt(txtDocID.getText());
-//        int age = Integer.parseInt(txtAge.getText());
         String name = txtName.getText();
         Hospital hospital1 = (Hospital)jTable1.getValueAt(jTable1.getSelectedRow(), 1);
         Doctor doctor = new Doctor(id, name, txtSpecialisation.getText(), txtUsername.getText(), (Hospital)jTable1.getValueAt(jTable1.getSelectedRow(), 1), txtPassword.getText(), txtGender.getText());

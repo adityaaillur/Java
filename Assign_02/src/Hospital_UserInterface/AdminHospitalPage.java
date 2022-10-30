@@ -4,6 +4,8 @@
  */
 package Hospital_UserInterface;
 
+import HospitalMngmt.Hospital;
+
 /**
  *
  * @author pavan
@@ -13,7 +15,7 @@ public class AdminHospitalPage extends javax.swing.JFrame {
     /**
      * Creates new form DoctorInfo
      */
-    public AdminHospitalPage() {
+    public AdminHospitalPage(Hospital temp) {
         initComponents();
     }
 
@@ -199,7 +201,8 @@ public class AdminHospitalPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminHospitalPage().setVisible(true);
+                Hospital temp = null;
+                new AdminHospitalPage(temp).setVisible(true);
             }
         });
     }

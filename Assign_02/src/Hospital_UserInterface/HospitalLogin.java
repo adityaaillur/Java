@@ -4,18 +4,21 @@
  */
 package Hospital_UserInterface;
 
+import HospitalMngmt.Hospital;
+import HospitalMngmt.Patient;
+import HospitalMngmt.SystemAdmin;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author adityaillur
  */
-public class HospitalAdminLogin extends javax.swing.JFrame {
+public class HospitalLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form SysAdmin
      */
-    public HospitalAdminLogin() {
+    public HospitalLogin() {
         initComponents();
     }
 
@@ -97,20 +100,53 @@ public class HospitalAdminLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-     String user;
+        String user;
         String pass;
         user=TxtUser.getText();
         pass=TxtPass.getText();
-//        adminpanel p=new adminpanel();
-        if(user.equals("admin")&&pass.equals("admin"))
-        {
-            this.dispose();
-//            p.setVisible(true);
-        }
-        else
-        {
+    //        adminpanel p=new adminpanel();
+         for(Hospital temp:SystemAdmin.hospitalList){
+            if(temp.verify(user, pass)) {
+                this.dispose();
+                this.setVisible(false);
+                new AdminHospitalPage(temp).setVisible(true);
+                return;
+            }
             JOptionPane.showMessageDialog(this,"Incorrect Admin Username & Password");
         }
+     
+     
+     //        String user;
+//        String pass;
+//        
+//        user=TxtUser.getText();
+//        pass=TxtPass.getText();
+////        adminpanel p=new adminpanel();
+//        if(user.equals("admin")&&pass.equals("admin"))
+//        {
+//            this.dispose();
+////            p.setVisible(true);
+//        }
+//        else
+//        {
+//            JOptionPane.showMessageDialog(this,"Incorrect Admin Username & Password");
+//        }
+//    String user;
+//    String pass;
+//    user=TxtUser.getText();
+//    pass=TxtPass.getText();
+////        adminpanel p=new adminpanel();
+//     for(Hospital temp:SystemAdmin.hospitalList){
+//        if(temp.verify(user, pass)) {
+//            this.dispose();
+//            this.setVisible(false);
+//            new PatientPage(temp).setVisible(true);
+//            return;
+//        }
+//        JOptionPane.showMessageDialog(this,"Incorrect Admin Username & Password");
+//    }
+        
+    
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
@@ -130,14 +166,22 @@ public class HospitalAdminLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HospitalAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HospitalAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HospitalAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HospitalAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -148,10 +192,8 @@ public class HospitalAdminLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HospitalAdminLogin().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new HospitalLogin().setVisible(true);
         });
     }
 

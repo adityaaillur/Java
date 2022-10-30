@@ -11,11 +11,32 @@ package HospitalMngmt;
 public class Community {
     private String name;
     private City city;
+    private String username;
+    private String password;
 
     public Community(String name, City city) {
         this.name = name;
         this.city = city;
+        this.username = username;
+        this.password = password;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
 
     public String getName() {
         return name;
