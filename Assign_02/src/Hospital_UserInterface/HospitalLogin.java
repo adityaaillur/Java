@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author adityaillur
  */
 public class HospitalLogin extends javax.swing.JFrame {
-
+private Hospital h;
     /**
      * Creates new form SysAdmin
      */
@@ -109,9 +109,8 @@ public class HospitalLogin extends javax.swing.JFrame {
             if(temp.verify(user, pass)) {
                 this.dispose();
                 this.setVisible(false);
-                new AdminHospitalPage(temp).setVisible(true);
-                return;
-            }
+          new HospitalAdminHospitalPage(temp).setVisible(true);
+          return;}
             JOptionPane.showMessageDialog(this,"Incorrect Admin Username & Password");
         }
      

@@ -4,7 +4,6 @@
  */
 package Hospital_UserInterface;
 
-import HospitalMngmt.Hospital;
 
 /**
  *
@@ -15,7 +14,7 @@ public class AdminHospitalPage extends javax.swing.JFrame {
     /**
      * Creates new form DoctorInfo
      */
-    public AdminHospitalPage(Hospital temp) {
+    public AdminHospitalPage() {
         initComponents();
     }
 
@@ -51,7 +50,7 @@ public class AdminHospitalPage extends javax.swing.JFrame {
         });
 
         btnAdminSearchDoctor.setFont(new java.awt.Font("Yrsa SemiBold", 1, 18)); // NOI18N
-        btnAdminSearchDoctor.setText("Search Hospital");
+        btnAdminSearchDoctor.setText("View Hospital");
         btnAdminSearchDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminSearchDoctorActionPerformed(evt);
@@ -75,7 +74,7 @@ public class AdminHospitalPage extends javax.swing.JFrame {
                     .addComponent(btnAdminSearchDoctor)
                     .addComponent(btnAdminAddDcotor)
                     .addComponent(jButton1))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAdminAddDcotor, btnAdminSearchDoctor});
@@ -181,31 +180,15 @@ public class AdminHospitalPage extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Hospital temp = null;
-                new AdminHospitalPage(temp).setVisible(true);
+                new AdminHospitalPage().setVisible(true);
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdminAddDcotor;

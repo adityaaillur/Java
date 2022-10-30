@@ -4,6 +4,8 @@
  */
 package Hospital_UserInterface;
 
+import HospitalMngmt.Hospital;
+
 /**
  *
  * @author adityaillur
@@ -181,7 +183,7 @@ public class AdminPage extends javax.swing.JFrame {
     private void btnHosDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHosDetailsActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new HospitalAdminHospitalPage().setVisible(true);
+        new AdminHospitalPage().setVisible(true);
     }//GEN-LAST:event_btnHosDetailsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

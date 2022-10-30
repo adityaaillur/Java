@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Hospital_UserInterface;
-
+import HospitalMngmt.Hospital;
 /**
  *
  * @author adityaillur
@@ -13,8 +13,7 @@ public class HospitalAdminHospitalPage extends javax.swing.JFrame {
     /**
      * Creates new form AdminDoctorPage
      */
-    public HospitalAdminHospitalPage() {
-        
+    public HospitalAdminHospitalPage(Hospital temp) {
         initComponents();
     }
 
@@ -29,7 +28,6 @@ public class HospitalAdminHospitalPage extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        btnAddHospital = new javax.swing.JButton();
         btnAddDoctor = new javax.swing.JButton();
         lblBack = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -41,14 +39,6 @@ public class HospitalAdminHospitalPage extends javax.swing.JFrame {
         jSplitPane1.setDividerSize(10);
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 255));
-
-        btnAddHospital.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
-        btnAddHospital.setText("Add Hospital");
-        btnAddHospital.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddHospitalActionPerformed(evt);
-            }
-        });
 
         btnAddDoctor.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
         btnAddDoctor.setText("Add Doctor");
@@ -74,23 +64,18 @@ public class HospitalAdminHospitalPage extends javax.swing.JFrame {
                 .addContainerGap(52, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAddDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblBack, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(btnAddHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(277, 277, 277)
                 .addComponent(btnAddDoctor)
                 .addGap(77, 77, 77)
                 .addComponent(lblBack)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAddDoctor, btnAddHospital});
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -130,11 +115,6 @@ public class HospitalAdminHospitalPage extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(new AdminAddDoctorPanel());
     }//GEN-LAST:event_btnAddDoctorActionPerformed
 
-    private void btnAddHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddHospitalActionPerformed
-        // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new AdminAddHospitalPanel());
-    }//GEN-LAST:event_btnAddHospitalActionPerformed
-
     private void lblBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblBackActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -144,54 +124,10 @@ public class HospitalAdminHospitalPage extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HospitalAdminHospitalPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HospitalAdminHospitalPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HospitalAdminHospitalPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HospitalAdminHospitalPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new HospitalAdminHospitalPage().setVisible(true);
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddDoctor;
-    private javax.swing.JButton btnAddHospital;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
