@@ -47,6 +47,8 @@ public class AdminAddCommunityPanel extends javax.swing.JPanel {
         txtPassword = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         btnAddCommunity.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         btnAddCommunity.setText("Add Community");
         btnAddCommunity.addActionListener(new java.awt.event.ActionListener() {
@@ -54,14 +56,19 @@ public class AdminAddCommunityPanel extends javax.swing.JPanel {
                 btnAddCommunityActionPerformed(evt);
             }
         });
+        add(btnAddCommunity, new org.netbeans.lib.awtextra.AbsoluteConstraints(532, 426, -1, -1));
+        add(txtCommunityName, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 431, 205, -1));
 
         lblCommunityName.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblCommunityName.setText("Community Name");
+        add(lblCommunityName, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 428, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Silom", 1, 36)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Add Community");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 845, 64));
 
+        tblCity.setBackground(new java.awt.Color(51, 153, 255));
         tblCity.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -75,6 +82,9 @@ public class AdminAddCommunityPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblCity);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 76, 766, 176));
+
+        tblCommunity.setBackground(new java.awt.Color(51, 153, 255));
         tblCommunity.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -88,69 +98,17 @@ public class AdminAddCommunityPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblCommunity);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 474, 766, 176));
+
         lblPassword.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblPassword.setText("Password");
+        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 314, -1, -1));
 
         lblUsername.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblUsername.setText("Username");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(547, Short.MAX_VALUE)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(85, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblUsername)
-                                    .addComponent(lblPassword))
-                                .addGap(93, 93, 93)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPassword)
-                                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCommunityName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCommunityName, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(65, 65, 65)
-                                .addComponent(btnAddCommunity)))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUsername))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCommunityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCommunityName)
-                    .addComponent(btnAddCommunity))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
-        );
+        add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 270, -1, -1));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 317, 248, -1));
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 273, 248, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCommunityActionPerformed

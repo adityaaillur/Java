@@ -53,6 +53,8 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(204, 255, 255));
+
         lblTitle.setFont(new java.awt.Font("Silom", 1, 36)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Add Doctor Details");
@@ -63,6 +65,7 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
         lblDocID.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblDocID.setText("Doctor ID");
 
+        txtDocID.setBackground(new java.awt.Color(102, 204, 255));
         txtDocID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDocIDActionPerformed(evt);
@@ -77,6 +80,7 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
         lblGender.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblGender.setText("Gender");
 
+        txtGender.setBackground(new java.awt.Color(102, 204, 255));
         txtGender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGenderActionPerformed(evt);
@@ -86,12 +90,16 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
         lblSpecialisation.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblSpecialisation.setText("Specialisation");
 
+        txtSpecialisation.setBackground(new java.awt.Color(102, 204, 255));
         txtSpecialisation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSpecialisationActionPerformed(evt);
             }
         });
 
+        txtPassword.setBackground(new java.awt.Color(102, 204, 255));
+
+        txtName.setBackground(new java.awt.Color(102, 204, 255));
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
@@ -109,9 +117,12 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
             }
         });
 
+        txtUsername.setBackground(new java.awt.Color(102, 204, 255));
+
         lblUsername.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblUsername.setText("Username");
 
+        jTable1.setBackground(new java.awt.Color(51, 153, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -130,14 +141,14 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblName)
                         .addGap(135, 135, 135)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtName))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblDocID)
                         .addGap(101, 101, 101)
@@ -156,7 +167,7 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
                                 .addComponent(txtGender, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(903, 903, 903))
+                .addContainerGap(151, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 1016, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -166,9 +177,9 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtDocID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblDocID))
@@ -194,8 +205,10 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
                             .addComponent(lblPassword))
                         .addGap(33, 33, 33)
                         .addComponent(btnSave))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(204, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

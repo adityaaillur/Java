@@ -65,6 +65,7 @@ public class AdminAddHospitalPanel extends javax.swing.JPanel {
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Add Hospital Details");
 
+        jTable1.setBackground(new java.awt.Color(51, 153, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},

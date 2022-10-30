@@ -216,8 +216,8 @@ public class AdminAddPatientPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
     if(txtName.getText()!=null && !Pattern.compile("[a-zA-Z ]+").matcher(txtName.getText()).matches()){
-    JOptionPane.showMessageDialog(this, "Please enter valid name");
-    return;         
+            JOptionPane.showMessageDialog(this, "Please enter valid name");
+            return;         
     }
     
     if(txtGender.getText()!=null && !Pattern.compile("[a-zA-Z ]+").matcher(txtGender.getText()).matches()){
