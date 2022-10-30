@@ -4,8 +4,10 @@
  */
 package Hospital_UserInterface;
 
+import HospitalMngmt.Community;
 import HospitalMngmt.Doctor;
 import HospitalMngmt.Hospital;
+import HospitalMngmt.Patient;
 import HospitalMngmt.SystemAdmin;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -92,6 +94,11 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
                 "Name", "Community", "Username", "Password", "Hospital Obj"
             }
         ));
+        tblViewHospital.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblViewHospitalMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblViewHospital);
 
         btnDelete.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
@@ -248,6 +255,16 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
         String textBoxString = txtSearch.getText();
         sorter.setRowFilter(RowFilter.regexFilter(textBoxString));
     }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void tblViewHospitalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewHospitalMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblViewHospital.getModel();
+        Hospital p = (Hospital)model.getValueAt(tblViewHospital.getSelectedRow(), 4);
+        txtName.setText(p.getHospitalName());
+//        txtCommunity.setText((Community)p.getCommunity());
+        txtUsername.setText(p.getUsername());
+        txtPassword.setText(p.getPassword());
+    }//GEN-LAST:event_tblViewHospitalMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

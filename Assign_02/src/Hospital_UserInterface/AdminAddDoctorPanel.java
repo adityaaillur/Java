@@ -213,6 +213,46 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
     // TODO add your handling code here:
+    if(txtName.getText()!=null && !Pattern.compile("[a-zA-Z ]+").matcher(txtName.getText()).matches()){
+            JOptionPane.showMessageDialog(this, "Please enter valid name");
+            return;         
+    }
+    
+    if(txtGender.getText()!=null && !Pattern.compile("[a-zA-Z ]+").matcher(txtGender.getText()).matches()){
+            JOptionPane.showMessageDialog(this, "Please enter valid name");
+            return;         
+    }
+    
+    if(txtSpecialisation.getText()!=null && !Pattern.compile("[a-zA-Z ]+").matcher(txtSpecialisation.getText()).matches()){
+            JOptionPane.showMessageDialog(this, "Please enter valid name");
+            return;         
+    }
+    
+    
+    
+    //        if(txtName.get){
+//            JOptionPane.showMessageDialog(this, "Please enter valid Level");
+//            return;
+//            
+//        }if(!Pattern.compile("[0-9]*$").matcher(age).matches()){
+//            JOptionPane.showMessageDialog(this, "Please enter valid Age");
+//            return;
+//            
+//        }if(!Pattern.compile("[0-9]*$").matcher(stDt).matches()){
+//            JOptionPane.showMessageDialog(this, "please enter valid start date");
+//            return;
+//        
+//        }if(!Pattern.compile("[a-zA-Z ]+").matcher(posTitl).matches()){
+//            JOptionPane.showMessageDialog(this, "please enter valid Position Title");
+//            return;
+//        //}if(!Pattern.compile("[0-9]*$").matcher(mobileNo).matches()){
+//           // JOptionPane.showMessageDialog(this, "6");
+//            //return;
+//        }if(!Pattern.compile("^(.+)@(.+)$").matcher(email).matches()){
+//            JOptionPane.showMessageDialog(this, "please enter valid Email");
+//            return;
+//        }
+    
     if(jTable1.getSelectedRow()>-1){
         int id = Integer.parseInt(txtDocID.getText());
         String name = txtName.getText();
@@ -223,6 +263,31 @@ public class AdminAddDoctorPanel extends javax.swing.JPanel {
     }else{
         JOptionPane.showMessageDialog(null, "Select hospital.");
     }
+    
+    
+        
+//        if(txtName.get){
+//            JOptionPane.showMessageDialog(this, "Please enter valid Level");
+//            return;
+//            
+//        }if(!Pattern.compile("[0-9]*$").matcher(age).matches()){
+//            JOptionPane.showMessageDialog(this, "Please enter valid Age");
+//            return;
+//            
+//        }if(!Pattern.compile("[0-9]*$").matcher(stDt).matches()){
+//            JOptionPane.showMessageDialog(this, "please enter valid start date");
+//            return;
+//        
+//        }if(!Pattern.compile("[a-zA-Z ]+").matcher(posTitl).matches()){
+//            JOptionPane.showMessageDialog(this, "please enter valid Position Title");
+//            return;
+//        //}if(!Pattern.compile("[0-9]*$").matcher(mobileNo).matches()){
+//           // JOptionPane.showMessageDialog(this, "6");
+//            //return;
+//        }if(!Pattern.compile("^(.+)@(.+)$").matcher(email).matches()){
+//            JOptionPane.showMessageDialog(this, "please enter valid Email");
+//            return;
+//        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenderActionPerformed

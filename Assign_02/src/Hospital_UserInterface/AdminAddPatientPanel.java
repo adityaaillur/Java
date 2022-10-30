@@ -6,6 +6,7 @@ package Hospital_UserInterface;
 
 import HospitalMngmt.Patient;
 import HospitalMngmt.SystemAdmin;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -213,6 +214,25 @@ public class AdminAddPatientPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        
+    if(txtName.getText()!=null && !Pattern.compile("[a-zA-Z ]+").matcher(txtName.getText()).matches()){
+    JOptionPane.showMessageDialog(this, "Please enter valid name");
+    return;         
+    }
+    
+    if(txtGender.getText()!=null && !Pattern.compile("[a-zA-Z ]+").matcher(txtGender.getText()).matches()){
+            JOptionPane.showMessageDialog(this, "Please enter valid name");
+            return;         
+    }
+    
+    if(txtAge.getText()!=null && !Pattern.compile("[0-9]*$").matcher(txtAge.getText()).matches()){
+            JOptionPane.showMessageDialog(this, "Please enter valid name");
+            return;         
+    }
+    
+    
+    
+        
         int id = Integer.parseInt(txtPatientID.getText());
 //         String name = name.getText();
          Patient patient = new Patient(id, txtUsername.getText(), txtPassword.getText(), txtName.getText(), txtGender.getText(), txtCity.getText(), txtCommunity.getText());
