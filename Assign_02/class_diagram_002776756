@@ -1,0 +1,142 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class City {
+  + City(String, int): 
+  - name: String
+  - zipcode: int
+  + toString(): String
+   name: String
+   zipcode: int
+}
+class Community {
+  + Community(String, City): 
+  - name: String
+  - city: City
+  - username: String
+  - password: String
+  + toString(): String
+   name: String
+   password: String
+   username: String
+   city: City
+}
+class Doctor {
+  + Doctor(): 
+  + Doctor(int, String, String, String, Hospital, String, String): 
+  + password: String
+  + username: String
+  + gender: String
+  + specialisation: String
+  + docId: int
+  + name: String
+  + hospital: Hospital
+  + equals(Object): boolean
+  + hashCode(): int
+  + toString(): String
+  + verify(String, String): boolean
+   name: String
+   password: String
+   gender: String
+   specialisation: String
+   hospital: Hospital
+   username: String
+   docId: int
+}
+class DoctorDirectory {
+  + DoctorDirectory(ArrayList<Doctor>): 
+  ~ directory: ArrayList<Doctor>
+  + addNewDoctor(): Doctor
+   directory: ArrayList<Doctor>
+}
+class Encounter {
+  + Encounter(Doctor, Patient): 
+}
+class EncounterHistory {
+  + EncounterHistory(): 
+}
+class Hospital {
+  + Hospital(String, String, String, Community): 
+  - hospitalName: String
+  - username: String
+  - password: String
+  - community: Community
+  + verify(String, String): boolean
+   hospitalName: String
+   community: Community
+   password: String
+   username: String
+}
+class HospitalDirectory {
+  + HospitalDirectory(ArrayList<Hospital>): 
+  + directory: ArrayList<Hospital>
+   directory: ArrayList<Hospital>
+}
+class House {
+  + House(int, Community): 
+  + community: Community
+  + houseNumber: int
+   community: Community
+   houseNumber: int
+}
+class Patient {
+  + Patient(int, String, String, String, String, String, String): 
+  + verify(String, String): boolean
+}
+class PatientDirectory {
+  + PatientDirectory(): 
+}
+class Person {
+  + Person(): 
+  + Person(int, String, String, String, String): 
+  - name: String
+  - gender: String
+  - role: String
+  - pid: int
+   name: String
+   gender: String
+   pid: int
+   role: String
+}
+class PersonDirectory {
+  + PersonDirectory(): 
+}
+class SystemAdmin {
+  + SystemAdmin(): 
+}
+class VitalSigns {
+  + VitalSigns(double, double, float, float, int, int): 
+  - Temperature: double
+  - Heartbeat: int
+  - Weight: float
+  - RespiratoryRate: int
+  - BloodPressure: double
+  - Height: float
+   Height: float
+   RespiratoryRate: int
+   BloodPressure: double
+   Temperature: double
+   Weight: float
+   Heartbeat: int
+}
+
+Community         "1" *-[#595959,plain]-> "city\n1" City              
+Doctor             -[#595959,dashed]->  Doctor            
+Doctor            "1" *-[#595959,plain]-> "hospital\n1" Hospital          
+DoctorDirectory    -[#595959,dashed]->  Doctor            : "«create»"
+Encounter         "1" *-[#595959,plain]-> "doctor\n1" Doctor            
+Encounter         "1" *-[#595959,plain]-> "patient\n1" Patient           
+Hospital          "1" *-[#595959,plain]-> "community\n1" Community         
+HospitalDirectory  -[#595959,dashed]->  Hospital          
+House             "1" *-[#595959,plain]-> "community\n1" Community         
+SystemAdmin        -[#595959,dashed]->  City              : "«create»"
+SystemAdmin        -[#595959,dashed]->  Community         
+SystemAdmin        -[#595959,dashed]->  Doctor            
+SystemAdmin        -[#595959,dashed]->  Encounter         
+SystemAdmin        -[#595959,dashed]->  Hospital          
+SystemAdmin        -[#595959,dashed]->  House             
+SystemAdmin        -[#595959,dashed]->  Patient           
+@enduml
