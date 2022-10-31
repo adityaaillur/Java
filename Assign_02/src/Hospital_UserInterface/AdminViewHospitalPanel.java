@@ -47,9 +47,7 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
         lblUsername = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
-        lblAge = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
-        txtCommunity = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
@@ -67,9 +65,6 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
 
         lblPassword.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
         lblPassword.setText("Password");
-
-        lblAge.setFont(new java.awt.Font("Krungthep", 1, 18)); // NOI18N
-        lblAge.setText("Community");
 
         btnUpdate.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         btnUpdate.setText("Update");
@@ -133,14 +128,12 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblUsername)
-                            .addComponent(lblPassword)
-                            .addComponent(lblAge))
-                        .addGap(80, 80, 80)
+                            .addComponent(lblPassword))
+                        .addGap(93, 93, 93)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnUpdate)
                             .addComponent(txtUsername)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -181,10 +174,6 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
                     .addComponent(lblName))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAge))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsername))
                 .addGap(18, 18, 18)
@@ -193,7 +182,7 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
                     .addComponent(lblPassword))
                 .addGap(33, 33, 33)
                 .addComponent(btnUpdate)
-                .addGap(94, 94, 94))
+                .addGap(138, 138, 138))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -271,14 +260,12 @@ public class AdminViewHospitalPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JTable tblViewHospital;
-    private javax.swing.JTextField txtCommunity;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtSearch;
